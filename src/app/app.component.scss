@@ -1,0 +1,16 @@
+
+.arch {
+    background-color: white;
+    width: 100%;  // TODO: maybe make this have a max size like similar website that are slimmer than widescreens
+    border-radius: 20% 20% 0 0;
+    height: 100%;
+    max-width: 1400px;
+    margin: auto;
+}
+
+.router-container {
+    margin: 20%;
+    margin-top: 30px;
+    padding: 20%;
+    padding-top: 30px;
+}
