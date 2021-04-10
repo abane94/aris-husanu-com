@@ -44,43 +44,43 @@ export class SkillsComponent implements OnInit, AfterViewInit {
       // typescript
       radius: 20,
       color: '#3178C6',  // typescript blue
-      imgUrl: '/assets/images/logos/ts-logo-128.png'
+      imgUrl: './assets/images/logos/ts-logo-128.png'
     },
     {
       // angular
       color: 'red',
       radius: 20,
-      imgUrl: '/assets/images/logos/angular.png'
+      imgUrl: './assets/images/logos/angular.png'
     },
     {
       // javascript
       color: '#F0DB4F',
       radius: 18,
-      imgUrl: '/assets/images/logos/JavaScript-logo.png'
+      imgUrl: './assets/images/logos/JavaScript-logo.png'
     },
     {
       // git
       color: '#F34F29',
       radius: 15,
-      imgUrl: '/assets/images/logos/git-logo.png'
+      imgUrl: './assets/images/logos/git-logo.png'
     },
     {
       // atlassian
       color: '#0152CD',
       radius: 15,
-      imgUrl: '/assets/images/logos/mark-gradient-blue-atlassian.png'
+      imgUrl: './assets/images/logos/mark-gradient-blue-atlassian.png'
     },
     {
       // java
       color: '#0152CD',
       radius: 15,
-      imgUrl: '/assets/images/logos/java.png'
+      imgUrl: './assets/images/logos/java.png'
     },
     {
       // python
       color: '#0152CD',
       radius: 15,
-      imgUrl: '/assets/images/logos/python.png'
+      imgUrl: './assets/images/logos/python.png'
     }
   ];
 

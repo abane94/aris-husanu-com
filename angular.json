@@ -20,7 +20,6 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "deployUrl": "./",
             "outputPath": "dist/aris-husanu-com",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -39,6 +38,7 @@
           },
           "configurations": {
             "production": {
+              "deployUrl": "./",
               "outputPath": "docs",
               "fileReplacements": [
                 {
