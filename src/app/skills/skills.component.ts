@@ -206,19 +206,19 @@ export class SkillsComponent implements OnInit, AfterViewInit {
     if (c.left <= 0) {
       // dx = dx - x;
       // newX = dx - x;
-      c.velocity[0] = -c.velocity[0] || this.rand(0.01 * VELOCITY_BOUNDS, VELOCITY_BOUNDS);
+      c.velocity[0] = Math.abs(c.velocity[0] || this.rand(0.01 * VELOCITY_BOUNDS, VELOCITY_BOUNDS));
     } else if (c.right >= (this.canvas?.width || 0)) {
       // newX = x - dx;
-      c.velocity[0] = -c.velocity[0] || -this.rand(0.01 * VELOCITY_BOUNDS, VELOCITY_BOUNDS);
+      c.velocity[0] = -Math.abs(c.velocity[0] || -this.rand(0.01 * VELOCITY_BOUNDS, VELOCITY_BOUNDS));
     }
 
     if (c.top <= 0) {
       // dx = dx - x;
       // newY = dy - y;
-      c.velocity[1] = -c.velocity[1] || this.rand(0.01 * VELOCITY_BOUNDS, VELOCITY_BOUNDS);
+      c.velocity[1] = Math.abs(c.velocity[1] || this.rand(0.01 * VELOCITY_BOUNDS, VELOCITY_BOUNDS));
     } else if (c.bottom >= (this.canvas?.height || 0)) {
       // newY = y - dy;
-      c.velocity[1] = -c.velocity[1] || -this.rand(0.01 * VELOCITY_BOUNDS, VELOCITY_BOUNDS);
+      c.velocity[1] = -Math.abs(c.velocity[1] || -this.rand(0.01 * VELOCITY_BOUNDS, VELOCITY_BOUNDS));
     }
 
     // if (this.balls.some(c2 => {
