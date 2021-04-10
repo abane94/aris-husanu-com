@@ -1,6 +1,7 @@
 import { AfterViewChecked, AfterViewInit, Component, ElementRef, OnInit, Optional, ViewChild } from '@angular/core';
 
-const DELTA = 10;  // .1 seconds
+const DELTA = 5;  // .1 seconds
+const VELOCITY_BOUNDS = 2;
 
 interface Skill {
   color: string;
@@ -22,6 +23,7 @@ interface Circle {
   bottom: number;
   left: number;
   right: number
+  speed: number;
 }
 
 class MyImage extends Image {
@@ -107,18 +109,26 @@ export class SkillsComponent implements OnInit, AfterViewInit {
     const img = new MyImage();
     img.onload = this.animate(ctx, img);
     img.src = base?.imgUrl || '/assets/images/typescript/ts-logo-128.png';   // load image
-    const c: Circle = Object.assign({
-      velocity: [this.rand(-3, 3), this.rand(-3, 3)],
-      position: [this.rand(0, this.canvas?.width || 0), this.rand(0, this.canvas?.height || 0)],
-      radius: this.rand(5, 15),
 
-      // imgURL: 'https://www.typescriptlang.org/images/branding/logo-grouping.svg',
+    const radius = this.rand(5, 15);
+    const c: Circle = Object.assign({
+      velocity: [this.rand(-VELOCITY_BOUNDS, VELOCITY_BOUNDS), this.rand(-VELOCITY_BOUNDS, VELOCITY_BOUNDS)],
+
+      // make sure the balls are clearly in side of the canvas
+      position: [
+        this.rand(1.001 * radius, this.canvas ? this.canvas.width - (1.001 * radius) : 0),
+        this.rand(1.001 * radius, this.canvas ? this.canvas.height - (1.001 * radius) : 0)
+      ],
+      radius,
 
       get top() { return this.position[1] - this.radius },
       get bottom() { return this.position[1] + this.radius },
 
       get left() { return this.position[0] - this.radius },
-      get right() { return this.position[0] + this.radius }
+      get right() { return this.position[0] + this.radius },
+
+      // magnitude of the velocity vector
+      get speed() { return Math.sqrt((this.velocity[0] ** 2) + (this.velocity[1] ** 2)); }
     }, base || {});
     img.data = c;
     c.img = img;
@@ -196,19 +206,19 @@ export class SkillsComponent implements OnInit, AfterViewInit {
     if (c.left <= 0) {
       // dx = dx - x;
       // newX = dx - x;
-      c.velocity[0] = -c.velocity[0];
+      c.velocity[0] = -c.velocity[0] || this.rand(0.01 * VELOCITY_BOUNDS, VELOCITY_BOUNDS);
     } else if (c.right >= (this.canvas?.width || 0)) {
       // newX = x - dx;
-      c.velocity[0] = -c.velocity[0];
+      c.velocity[0] = -c.velocity[0] || -this.rand(0.01 * VELOCITY_BOUNDS, VELOCITY_BOUNDS);
     }
 
     if (c.top <= 0) {
       // dx = dx - x;
       // newY = dy - y;
-      c.velocity[1] = -c.velocity[1];
+      c.velocity[1] = -c.velocity[1] || this.rand(0.01 * VELOCITY_BOUNDS, VELOCITY_BOUNDS);
     } else if (c.bottom >= (this.canvas?.height || 0)) {
       // newY = y - dy;
-      c.velocity[1] = -c.velocity[1];
+      c.velocity[1] = -c.velocity[1] || -this.rand(0.01 * VELOCITY_BOUNDS, VELOCITY_BOUNDS);
     }
 
     // if (this.balls.some(c2 => {
@@ -222,27 +232,17 @@ export class SkillsComponent implements OnInit, AfterViewInit {
 
     for (const c2 of this.balls) {
       if (c === c2) {continue;}
-      if (this.areColliding(c, c2)) {
+
+      const collisionVector = this.areColliding(c, c2)
+      if (collisionVector) {
         // TODO: this logic should use the other circles velocity, and account for the balls sizes
-        // c.velocity[0] = -c.velocity[0];
-        // c.velocity[1] = -c.velocity[1];
-        // c.position[0] += (c.radius * (c.velocity[0] > 0 ? 1 : -1));
-        // c.position[1] += (c.radius * (c.velocity[1] > 0 ? 1 : -1));
 
-        // c2.velocity[0] = -c2.velocity[0];
-        // c2.velocity[1] = -c2.velocity[1];
-        // c2.position[0] += (c2.radius * (c2.velocity[0] > 0 ? 1 : -1));
-        // c2.position[1] += (c2.radius * (c2.velocity[1] > 0 ? 1 : -1));
-
-        c.velocity[0] = -c.velocity[0];
-        c.velocity[1] = -c.velocity[1];
-        c.position[0] += (c.radius * (c.velocity[0] > 0 ? 1 : -1));
-        c.position[1] += (c.radius * (c.velocity[1] > 0 ? 1 : -1));
-
-        c2.velocity[0] = -c2.velocity[0];
-        c2.velocity[1] = -c2.velocity[1];
-        c2.position[0] += (c2.radius * (c2.velocity[0] > 0 ? 1 : -1));
-        c2.position[1] += (c2.radius * (c2.velocity[1] > 0 ? 1 : -1));
+        c.velocity = collisionVector.map(i => -i * c.speed);  // need to scale for speed;
+        c2.velocity = collisionVector.map(i => i * c2.speed); // move in the opposite direction
+        while (this.areColliding(c, c2)) {
+          c.position[0] = c.position[0] + c.velocity[0];;
+          c.position[1] = c.position[1] + c.velocity[1];;
+        }
       }
     }
 
@@ -252,12 +252,18 @@ export class SkillsComponent implements OnInit, AfterViewInit {
     console.log('\n\n');
   }
 
+  // returns false or the directional unit vector of the collision (also includes the distance from vertices)
   private areColliding(c1: Circle ,c2: Circle){
     // todo: make sure I know how this works
       const dx = c2.position[0] - c1.position[0];
       const dy = c2.position[1] - c1.position[1];
       const rSum = c1.radius + c2.radius;
-      return(dx * dx + dy * dy <= rSum * rSum);
+
+      if (dx * dx + dy * dy <= rSum * rSum) {
+        const m = Math.sqrt((dx ** 2) + (dy ** 2));
+        return [dx / m, dy / m, m];
+      }
+      return false;
   }
 
   drawCircle(c: Circle, ctx: CanvasRenderingContext2D) {
