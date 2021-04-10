@@ -1,7 +1,7 @@
 
-<div style="width:100%">
+<div>
     <div fxLayout="row" fxLayoutAlign="space-evenly center" >
-        <a class="link" href="https://github.com/abane94"><img src="/assets/images/logos/GitHub-Mark-120px-plus.png"></a>
+        <a class="link" href="https://github.com/abane94"><img src="/assets/images/logos/GitHub-Mark-120px-plus.png" alt="https://github.com/abane94"></a>
         <img class="profile" src="/assets/images/aris-husanu-croped.jpg">
         <a class="link" href="https://www.linkedin.com/in/aris-husanu-6ba419a5/"><img src="/assets/images/logos/LI-In-Bug.png"></a>
     </div>
@@ -11,56 +11,59 @@
         <h2>Software Engineer</h2>
     </div>
 
-    <p>
-        Seeking a new position in the software engineering space, I would like to work on both personal and professional development by finding a new job in a new location to learn new things.
-    </p>
+    <div style="padding: 10px;">
+        <h2>Objective</h2>
+        <p class="objective">
+            Seeking a new position in the software engineering space, I would like to work on both personal and professional development by finding a new job in a new location to learn new things.
+        </p>
 
-    <P>
-        Full stack typescript is with angular is my bread and butter, but I'm always excited to learn something new. I think its important to approach software development as a creative process.
-    </P>
+        <!-- <P>
+            Full stack typescript is with angular is my bread and butter, but I'm always excited to learn something new. I think its important to approach software development as a creative process.
+        </P> -->
 
-    <!-- Education -->
-    <h2>Education</h2>
-    <div class="list">
-        <mat-accordion>
-            <mat-expansion-panel hideToggle *ngFor="let item of education; let i = index" [expanded]="!i">
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                {{ item.name }}
-                </mat-panel-title>
-                <mat-panel-description>
-                {{ item.years}}
-                </mat-panel-description>
-            </mat-expansion-panel-header>
-            <p>{{ item.study }}</p>
-            </mat-expansion-panel>
-        </mat-accordion>
+        <!-- Education -->
+        <h2>Education</h2>
+        <div class="list">
+            <mat-accordion>
+                <mat-expansion-panel *ngFor="let item of education; let i = index" [expanded]="!i">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                    {{ item.name }}
+                    </mat-panel-title>
+                    <mat-panel-description>
+                    {{ item.years}}
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <p>{{ item.study }}</p>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+
+
+        <!-- Work -->
+        <h2>Professional Experience</h2>
+        <div class="list">
+            <mat-accordion>
+                <mat-expansion-panel *ngFor="let item of work; let i = index" [expanded]="!i">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                    {{ item.title }}
+                    </mat-panel-title>
+                    <mat-panel-description>
+                    {{ item.years}}
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <h4>{{ item.company }} - {{ item.years }}</h4>
+                <p>{{ item.desc }}</p>
+                <ul><li *ngFor="let point of item.points">{{ point }}</li></ul>
+                <!--  TODO: add projects -->
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+
+        <h2>Skills</h2>
+        <app-skills></app-skills>
+
     </div>
-
-
-    <!-- Work -->
-    <h2>Professional Experience</h2>
-    <div class="list">
-        <mat-accordion>
-            <mat-expansion-panel hideToggle *ngFor="let item of work; let i = index" [expanded]="!i">
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                {{ item.title }}
-                </mat-panel-title>
-                <mat-panel-description>
-                {{ item.years}}
-                </mat-panel-description>
-            </mat-expansion-panel-header>
-            <h4>{{ item.company }} - {{ item.years }}</h4>
-            <p>{{ item.desc }}</p>
-            <ul><li *ngFor="let point of item.points">{{ point }}</li></ul>
-            <!--  TODO: add projects -->
-            </mat-expansion-panel>
-        </mat-accordion>
-    </div>
-
-
-    <app-skills></app-skills>
-
 
 </div>

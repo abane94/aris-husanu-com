@@ -12,7 +12,21 @@
 }
 
 .list{
+    width: 95%;
+    margin: auto;
     margin-bottom: 40px;
     padding: 10px;
     background-color: grey;
+
+}
+
+.mat-expansion-panel-header-description {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+
+.objective {
+    width: 80%;
+    margin: auto;
 }

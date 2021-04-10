@@ -62,7 +62,7 @@ export class SkillsComponent implements OnInit, AfterViewInit {
       // git
       color: '#F34F29',
       radius: 15,
-      imgUrl: '/assets/images/logos/git-logo.eps'
+      imgUrl: '/assets/images/logos/git-logo.png'
     },
     {
       // atlassian
@@ -193,7 +193,6 @@ export class SkillsComponent implements OnInit, AfterViewInit {
   }
 
   processMoveable(c: Circle) {
-    console.log(c);
     const x = c.position[0];
     const y = c.position[1];
 
@@ -248,8 +247,6 @@ export class SkillsComponent implements OnInit, AfterViewInit {
 
     // c.position[0] = newX;
     // c.position[1] = newY;
-    console.log(c);
-    console.log('\n\n');
   }
 
   // returns false or the directional unit vector of the collision (also includes the distance from vertices)
