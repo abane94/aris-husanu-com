@@ -39,6 +39,7 @@
           "configurations": {
             "production": {
               "outputPath": "docs",
+              "baseHref": "aris-husanu-com",
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
