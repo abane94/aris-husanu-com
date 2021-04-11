@@ -2,11 +2,12 @@
     height: 100%;
     background-color: white;
     width: 100%;  // TODO: maybe make this have a max size like similar website that are slimmer than widescreens
-    border-radius: 40% 40% 0 0;
+    border-radius: 40vh 40vh 0 0;
     max-width: 1200px;
     margin: auto;
     margin-bottom: 0;
     z-index: 1;
+    margin-top: 2vh;
 }
 .arch-attached {
     // top: 10%;
@@ -16,7 +17,7 @@
     // height: 100%;
     max-width: 1200px;
     margin: auto;
-    margin-top: -48%;
+    margin-top: -98vh;
     z-index: 2;
 }
 
