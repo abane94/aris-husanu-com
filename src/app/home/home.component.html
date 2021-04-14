@@ -1,72 +1,115 @@
 
-<div>
-    <div fxLayout="row" fxLayoutAlign="space-evenly center" >
+<div ngClass.lt-md="small" ngClass.md="med" ngStyle.lt-md="margin-bottom: 10vh">
+    <!-- 4B3752 - purple,
+        58617A - blue,
+        46694F - green,
+        805B7C - pink,
+        825B5E - red -->
+    <div style="background-color: #4B3752;">
+        <!-- <div fxLayout="column" fxLayoutAlign="space-evenly center" > -->
+        <div style="padding: 10px;">
+            <div class="profile-container"><img class="profile" src="./assets/images/aris-husanu-croped.jpg"></div>
+            <div class="name-banner" fxLayout="row" fxLayoutAlign="center center">
+                <!-- <h1> -->
+                    Aris Husanu
+                <!-- </h1> -->
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-evenly center" >
+                <div class="line"></div>
+                <div class="title">Software Engineer</div>
+                <div class="line"></div>
+            </div>
+        </div>
+        <div class="links-bar" fxLayout="row" fxLayoutAlign="space-evenly center">
+            <a class="link" href="https://github.com/abane94"><img src="./assets/images/logos/GitHub-Mark-120px-plus.png" alt="https://github.com/abane94"></a>
+            <mat-icon aria-hidden="false" aria-label="Example call icon">call</mat-icon>
+            <mat-icon aria-hidden="false" aria-label="Example email icon">email</mat-icon>
+            <a class="link" href="https://www.linkedin.com/in/aris-husanu-6ba419a5/"><img src="./assets/images/logos/LI-In-Bug.png"></a>
+            <!-- TODO: Resume Download -->
+        </div>
+    </div>
+
+    <!-- <div fxLayout="row" fxLayoutAlign="space-evenly center" >
         <a class="link" href="https://github.com/abane94"><img src="./assets/images/logos/GitHub-Mark-120px-plus.png" alt="https://github.com/abane94"></a>
         <img class="profile" src="./assets/images/aris-husanu-croped.jpg">
         <a style="background-color: white;" class="link" href="https://www.linkedin.com/in/aris-husanu-6ba419a5/"><img src="./assets/images/logos/LI-In-Bug.png"></a>
-        <!-- <a style="background-color: white;" class="link" href="tel:2628943004"><img src="./assets/images/logos/LI-In-Bug.png"></a> -->
     </div>
 
     <div fxLayout="column" fxLayoutAlign="center center" >
         <h1>Aris Husanu</h1>
         <h2>Software Engineer</h2>
-    </div>
+    </div> -->
 
-    <div style="padding: 10px;">
-        <h2>Objective</h2>
-        <p class="objective">
-            <mat-card>
-                Seeking a new position in the software engineering space, I would like to work on both personal and professional development by finding a new job in a new location to learn new things.
-            </mat-card>
-        </p>
+    <!-- <div class="content" style="padding: 10px;"> -->
 
-        <!-- <P>
-            Full stack typescript is with angular is my bread and butter, but I'm always excited to learn something new. I think its important to approach software development as a creative process.
-        </P> -->
+        <!-- Objective / About me -->
+        <div class="objective-container section">
+            <h1>Objective</h1>
+            <p class="objective">
+                <mat-card>
+                    Seeking a new position in the software engineering space, I would like to work on both personal and professional development by finding a new job in a new location to learn new things.
+                </mat-card>
+            </p>
+
+            <!-- <P>
+                Full stack typescript is with angular is my bread and butter, but I'm always excited to learn something new. I think its important to approach software development as a creative process.
+            </P> -->
+        </div>
+
 
         <!-- Education -->
-        <h2>Education</h2>
-        <div class="list">
-            <mat-accordion>
-                <mat-expansion-panel *ngFor="let item of education; let i = index" [expanded]="!i">
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                    {{ item.name }}
-                    </mat-panel-title>
-                    <mat-panel-description>
-                    {{ item.years}}
-                    </mat-panel-description>
-                </mat-expansion-panel-header>
-                <p>{{ item.study }}</p>
-                </mat-expansion-panel>
-            </mat-accordion>
+        <div class="edu-container section">
+            <h1>Education</h1>
+            <div class="list">
+                <mat-accordion>
+                    <mat-expansion-panel *ngFor="let item of education; let i = index" [expanded]="!i">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                        {{ item.name }}
+                        </mat-panel-title>
+                        <mat-panel-description>
+                        {{ item.years}}
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <p>{{ item.study }}</p>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
+
         </div>
 
 
         <!-- Work -->
-        <h2>Professional Experience</h2>
-        <div class="list">
-            <mat-accordion>
-                <mat-expansion-panel *ngFor="let item of work; let i = index" [expanded]="!i">
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                    {{ item.title }}
-                    </mat-panel-title>
-                    <mat-panel-description>
-                    {{ item.years}}
-                    </mat-panel-description>
-                </mat-expansion-panel-header>
-                <h4>{{ item.company }} - {{ item.years }}</h4>
-                <p>{{ item.desc }}</p>
-                <ul><li *ngFor="let point of item.points">{{ point }}</li></ul>
-                <!--  TODO: add projects -->
-                </mat-expansion-panel>
-            </mat-accordion>
+        <div class="work-container section">
+            <h1>Professional Experience</h1>
+            <div class="list">
+                <mat-accordion>
+                    <mat-expansion-panel *ngFor="let item of work; let i = index" [expanded]="!i">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                        {{ item.title }}
+                        </mat-panel-title>
+                        <mat-panel-description>
+                        {{ item.years}}
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <h4>{{ item.company }} - {{ item.years }}</h4>
+                    <p>{{ item.desc }}</p>
+                    <ul><li *ngFor="let point of item.points">{{ point }}</li></ul>
+                    <!--  TODO: add projects -->
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
         </div>
 
-        <h2>Skills</h2>
-        <app-skills></app-skills>
 
-    </div>
+        <!-- skills -->
+        <div class="skills-container section">
+            <h1>Skills</h1>
+            <app-skills></app-skills>
+        </div>
+
+
+    <!-- </div> -->
 
 </div>

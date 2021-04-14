@@ -184,6 +184,9 @@ export class SkillsComponent implements OnInit, AfterViewInit {
     // clear canvas
     ctx.clearRect(0, 0, this.canvas?.width || 0, this.canvas?.height || 0);
 
+    ctx.fillStyle = "#808080";
+    ctx.fillRect(0, 0, this.canvas?.width || 0, this.canvas?.height || 0);
+
     for (const ball of this.balls) {
       this.drawCircle(ball, ctx);
     }

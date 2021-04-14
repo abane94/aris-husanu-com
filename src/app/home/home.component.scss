@@ -1,17 +1,42 @@
 .profile {
     border-radius: 8%;
-    width: 15%;
+    width: 15vw;
+    margin: auto;
+}
+
+.small .profile {
+    width: 40vw;
+}
+
+.profile-container {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: -50px;
 }
 
 .link {
-    width: 5%;
+    height: 5vh;
 }
 
 .link img {
-    width: 100%;
+    height: 5vh;
 }
 
-.list{
+.links-bar {
+    padding-bottom: 2vh;
+}
+
+.small .links-bar {
+    position: absolute;
+    bottom: 0;
+    z-index: 5;
+    background-color: #4B3752;
+    height: 10vh;
+    width: 100%;
+    padding-bottom: 0;
+}
+
+.list {
     width: 95%;
     margin: auto;
     margin-bottom: 40px;
@@ -30,3 +55,72 @@
     width: 80%;
     margin: auto;
 }
+
+.name-banner {
+    // border-radius: -15px;
+    width: 80%;
+    margin: auto;
+    // font: Garamond;
+    background-color: cornsilk;
+    text-align: center;
+    height: 30vh;
+    margin-bottom: 10px;
+
+
+    font-size: 10vw;
+}
+
+.name-banner h1 {
+    // margin: 5px;
+    font-size: 10vw;
+    // line-height: 30vh;  // should be fixed by using the flex end
+}
+
+.line {
+    height: 3px;
+    background-color: white;
+    border-radius: 1px;
+    width: 20vw;
+}
+
+.small .line {
+    width: 11vw;
+}
+
+.title {
+    height: 20px;
+    background-color: #805B7C;
+    border-radius: 3px;
+    color: white;
+    width: 20vw;
+    text-align: center;
+}
+
+.small .title {
+    width: 38vw;
+}
+
+.section h1 {
+    width: 100%;
+    text-align: center;
+}
+
+.section {
+    padding: 5%;
+}
+
+.section:nth-child(odd) {
+    background-color: #46694F;
+    color: white;
+}
+.section:nth-child(even) {
+    background-color: #58617A;
+    color: white;
+}
+
+.links-bar mat-icon {
+    height: 5vh;
+    width: auto;
+    font-size: 5vh;
+}
+
