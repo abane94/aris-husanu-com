@@ -66,6 +66,14 @@ export class HomeComponent implements OnInit {
     }
   ]
 
+  openEmail() {
+    window.open('mailto:' + ['a', 'r', 'i', 's', '@', 'h', 'u', 's', 'a', 'n', 'u', '.', 'c', 'o', 'm'].join(''));
+  }
+
+  openPhone() {
+    window.open('tel:' + ['1','2','6','2','8','9','4','3','0','0','4'].join(''));
+  }
+
   constructor() { }
 
   ngOnInit(): void {
