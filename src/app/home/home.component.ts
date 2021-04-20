@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
       years: '2019-Present',
       desc: '',
       points: ['Monitoring System for vehicle test cells', 'MEAN Stack with typescript backend', 'Implemented a team code review process'],
-      // projects: { title: string, desc: string }[]
+      projects:[ { title: 'Customizable Activity Dialog', desc: 'A configurable Angular module wrapped in an NPM package. That could be added to a custom Angular form app used to translate and collect data.'}]
     },
     {
       title: 'Product Development Intern',
@@ -46,7 +46,7 @@ export class HomeComponent implements OnInit {
       years: '2017-2018',
       desc: '',
       points: ['Web platform to host apps for supply chain', 'Java/Spring backend', 'Javascript/EXTjs', 'Bug/Defect work'],
-      // projects: { title: string, desc: string }[]
+      projects: [{ title: 'Mobile Remote viewing system', desc: 'Implemented a Cordova plugin to remotely view an android device from a web client as part of senior capstone. Using: JavaScript, Angular, Material, Node, Express, Cordova, Java.' }]
     },
     {
       title: 'Software Development Intern',
@@ -55,6 +55,7 @@ export class HomeComponent implements OnInit {
       years: '2016-2017',
       desc: '',
       points: ['Writing and testing code, discussing requirements', 'Learned Python on the job', 'Reading/mapping/writing CSV files, managing inconsistent data'],
+      // projects: {title: '', desc: ''}
     },
     {
       title: 'Mobile App Developer (Founder)',

@@ -22,8 +22,8 @@
         </div>
         <div class="links-bar" fxLayout="row" fxLayoutAlign="space-evenly center">
             <a class="link" href="https://github.com/abane94"><img src="./assets/images/logos/GitHub-Mark-120px-plus.png" alt="https://github.com/abane94"></a>
-            <mat-icon aria-hidden="false" aria-label="Example call icon" (click)="openPhone()">call</mat-icon>
-            <mat-icon aria-hidden="false" aria-label="Example email icon" (click)="openEmail()">email</mat-icon>
+            <mat-icon aria-hidden="false" aria-label="Example call icon" (click)="openPhone()" style="cursor: pointer">call</mat-icon>
+            <mat-icon aria-hidden="false" aria-label="Example email icon" (click)="openEmail()" style="cursor: pointer">email</mat-icon>
             <a class="link" href="https://www.linkedin.com/in/aris-husanu-6ba419a5/"><img src="./assets/images/logos/LI-In-Bug.png"></a>
             <!-- TODO: Resume Download -->
         </div>
@@ -44,16 +44,18 @@
 
         <!-- Objective / About me -->
         <div class="objective-container section">
-            <h1>Objective</h1>
-            <p class="objective">
+            <h1>About Me</h1>
+            <!-- <p class="objective">
                 <mat-card>
                     Seeking a new position in the software engineering space, I would like to work on both personal and professional development by finding a new job in a new location to learn new things.
                 </mat-card>
-            </p>
+            </p> -->
 
-            <!-- <P>
-                Full stack typescript is with angular is my bread and butter, but I'm always excited to learn something new. I think its important to approach software development as a creative process.
-            </P> -->
+            <p class="objective">
+                <mat-card style="text-align: center;">
+                    Full stack Typescript is with Angular is my bread and butter, but I'm always excited to learn something new. I think its important to approach software development as a creative process.
+                </mat-card>
+            </p>
         </div>
 
 
@@ -97,6 +99,10 @@
                     <p>{{ item.desc }}</p>
                     <ul><li *ngFor="let point of item.points">{{ point }}</li></ul>
                     <!--  TODO: add projects -->
+                    <div *ngFor="let project of item.projects">
+                        <b>Project: {{ project.title }}</b>
+                        <p>{{ project.desc }}</p>
+                    </div>
                     </mat-expansion-panel>
                 </mat-accordion>
             </div>
